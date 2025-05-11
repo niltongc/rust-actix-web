@@ -55,7 +55,7 @@ async fn get_client(path: web::Path<(String,)>) -> impl Responder {
         HttpResponse::Ok().json(client)
     }
     else {
-        HttpResponse::NotFound().json(Message { mensagem: "Hello rust".to_string() })
+        HttpResponse::NotFound().json(Message { mensagem: "Hello rust 2".to_string() })
     }
     
 }
@@ -109,7 +109,7 @@ fn show_clients_list() -> Vec<Client> {
 async fn main() -> std::io::Result<()> {
     let cfg = load_config().expect("Failed to load configuration.");
     let server_cfg = cfg.server;
-    let address = format!("{}:{}", server_cfg.host, server_cfg.port);
+    let address = format!("0.0.0.0:{}", server_cfg.port);
 
     println!("Starting server on http://{}", address);
 
